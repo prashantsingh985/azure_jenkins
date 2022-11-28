@@ -36,6 +36,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Build and Deploy to Azure
-        run: sh ./deply.sh
-        shell: bash
+#       - name: Build and Deploy to Azure
+#         run: sh ./deply.sh
+#         shell: bash
