@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  DOCKER_IMAGE_NAME: 'ghcr.io/prashantsingh985/nginx'
+
+jobs:
+
+  build-and-deploy-docker-image:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag '${{env.DOCKER_IMAGE_NAME}}':latest
+      
+    - name: Docker Login
+      run: docker login --username '${{secrets.DOCKER_REGISTRY_SERVER_USERNAME}}' --password '${{secrets.DOCKER_REGISTRY_SERVER_PASSWORD}}'
+      
+#     - name: Tag the Docker image
+#       run: docker tag '${{env.DOCKER_IMAGE_NAME}}':latest '${{secrets.DOCKER_LOGIN}}'/'${{env.DOCKER_IMAGE_NAME}}':latest
+      
+    - name: Push the Docker image
+      run: docker push '${{env.DOCKER_IMAGE_NAME}}':latest
