@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nginx:
+    # image: prashantsingh985/biometric:biometric_nginx_latest
+    # image: biometricregistry.azurecr.io/biometric_nginx:latest
+    image: ghcr.io/prashantsingh985/nginx:latest
+    build: 
+      # context: .
+      dockerfile: ./Dockerfile
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
