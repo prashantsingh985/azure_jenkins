@@ -5,7 +5,7 @@ services:
     # image: biometricregistry.azurecr.io/biometric_nginx:latest
     image: ghcr.io/prashantsingh985/nginx:latest
     build: 
-      # context: .
+      context: .
       dockerfile: ./Dockerfile
     container_name: nginx
     restart: always
