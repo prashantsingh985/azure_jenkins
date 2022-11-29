@@ -34,7 +34,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: login to GitHub Packages
-        run: echo "" | docker login ghcr.io -u username --password-stdin
+        run: echo '${{secrets.DOCKER_REGISTRY_SERVER_PASSWORD}}' | docker login ghcr.io -u username --password-stdin
           
 #       - name: Pusblish/Push to GitHub Packages
 #         run: sh ./deply.sh
